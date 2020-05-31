@@ -9,7 +9,6 @@ import 'package:kf_drawer/kf_drawer.dart';
 import 'package:tezpay/AppConstant/Constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-
 class MenuPage extends KFDrawerContent {
   MenuPage(this.marketId);
   final int marketId;
@@ -60,46 +59,40 @@ class _MenuPageState extends State<MenuPage> implements MenuPageContract {
                       style: kMenutezpay,
                     ),
                   ),
-                  Container(
-                    //margin: EdgeInsets.only(top: 10.0),
-                    child: Text(
-                      'Продукты',
-                      style: kMenuHeading,
-                    ),
-                  ),
                 ],
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 15.0),
-              child: TextField(
-                decoration: new InputDecoration(
-                  border: new OutlineInputBorder(
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(30.0),
-                    ),
-                    borderSide: BorderSide(
-                      width: 0,
-                      style: BorderStyle.none,
-                    ),
-                  ),
-                  hintText: 'Поиск',
-                  hintStyle: TextStyle(color: Colors.black45),
-                  filled: true,
-                  contentPadding: EdgeInsets.all(15),
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: PrimaryColor,
-                  ),
-                  focusColor: PrimaryColor,
-                  hasFloatingPlaceholder: true,
-                ),
+              margin: EdgeInsets.only(left: 20.0),
+              child: Text(
+                'Магазин',
+                style: kMenuProductsName,
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 20.0),
+              child: DropdownButton<String>(
+                  value: 'Фиркан',
+                  items: <String>['Фиркан']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (String value) {
+                    setState(() {});
+                  }),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 20.0),
+              child: Text(
+                'Продукты',
+                style: kMenuProductsName,
               ),
             ),
             _menuModel != null
                 ? Container(
-                    margin: EdgeInsets.only(
-                        top: MediaQuery.of(context).size.height / 30),
                     height: MediaQuery.of(context).size.height / 7,
                     child: ListView.builder(
                         itemCount: _menuModel.categories.category.length,
@@ -110,7 +103,7 @@ class _MenuPageState extends State<MenuPage> implements MenuPageContract {
                               child: Container(
                                 margin: EdgeInsets.only(left: 20),
                                 //height: 100,
-                                width: MediaQuery.of(context).size.width / 6,
+                                width: MediaQuery.of(context).size.width / 4.5,
                                 //color: PrimaryColor,
                                 decoration: new BoxDecoration(
                                     gradient: menuListSelect == index
@@ -244,7 +237,9 @@ class _MenuPageState extends State<MenuPage> implements MenuPageContract {
                                                             60),
                                                     child: ClipOval(
                                                       child: Image.network(
-                                                        _menuModel.products[index].image,
+                                                        _menuModel
+                                                            .products[index]
+                                                            .image,
                                                         width: MediaQuery.of(
                                                                     context)
                                                                 .size
@@ -255,7 +250,7 @@ class _MenuPageState extends State<MenuPage> implements MenuPageContract {
                                                                 .size
                                                                 .width /
                                                             3.5,
-                                                        fit: BoxFit.cover,
+                                                        fit: BoxFit.contain,
                                                       ),
                                                     ),
                                                   ),

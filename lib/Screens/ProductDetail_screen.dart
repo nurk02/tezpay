@@ -77,7 +77,7 @@ class _addDetail_screenState extends State<addDetail_screen>
                               ),
                               child: Image.network(
                                 _products.image,
-                                fit: BoxFit.cover,
+                                fit: BoxFit.contain,
                               ),
                             ),
                           ),

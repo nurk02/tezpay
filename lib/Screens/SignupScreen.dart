@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:tezpay/Screens/DrawerPage_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tezpay/AppConstant/Constants.dart';
+import 'package:tezpay/Screens/LoginPassword.dart';
+import 'package:tezpay/Screens/auth_page.dart';
 import 'package:tezpay/models/User.dart';
 import 'package:tezpay/presenter/login_presenter.dart';
 import 'package:tezpay/presenter/signup_presenter.dart';
@@ -23,9 +25,18 @@ class _SignupScreenState extends State<SignupScreen>
     _presenter = SignupPagePresenter(this);
   }
 
+  var scaffoldKey = GlobalKey<ScaffoldState>();
+
+  void _showSnackBar(String text) {
+    scaffoldKey.currentState.showSnackBar(new SnackBar(
+      content: new Text(text),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       resizeToAvoidBottomInset: true,
       backgroundColor: BackGroundColor,
       body: SingleChildScrollView(
@@ -182,13 +193,20 @@ class _SignupScreenState extends State<SignupScreen>
                                     BorderSide(color: PrimaryColor, width: 2.0),
                               ),
                               onPressed: () {
-                                print("Ss");
-                                _presenter.fetchSignUp(
-                                    _username.text, _password.text);
+                                if (!_username.text.contains('@')) {
+                                  _showSnackBar("Неправильный email");
+                                } else if (_password.text.length < 4) {
+                                  _showSnackBar(
+                                      "Пароль должен быть выше 4 символа");
+                                } else {
+                                  _presenter.fetchSignUp(
+                                      _username.text, _password.text);
+                                }
                               },
                               child: Container(
                                 child: Center(
-                                  child: Text('Авторизация', style: kLoginSendText),
+                                  child: Text('Авторизация',
+                                      style: kLoginSendText),
                                 ),
                               ),
                             ),
@@ -208,12 +226,16 @@ class _SignupScreenState extends State<SignupScreen>
 
   @override
   void onError(String error) {
-    // TODO: implement onError
+    _showSnackBar("Ошибка");
   }
 
   @override
   void onSuccess(User user) {
-    Navigator.pushAndRemoveUntil(
-        context, MaterialPageRoute(builder: (context) => MyApp()), (Route<dynamic> route) => false);
+    _showSnackBar("Успешно!");
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => LoginPassword()),
+    );
   }
 }

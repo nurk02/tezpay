@@ -21,7 +21,7 @@ class AddresssScreen extends StatefulWidget {
 class _AddresssScreenState extends State<AddresssScreen>
     implements AddressPageContract {
   int selectedAddress = 0;
-  String address = "";
+  String _address = "";
   List<Address> _list = [];
   int _hide = 0;
   AddressPagePresenter _presenter;
@@ -95,7 +95,7 @@ class _AddresssScreenState extends State<AddresssScreen>
                                   print(_list[index].street);
                                   setState(() {
                                     selectedAddress = index;
-                                    address = _list[index].street;
+                                    _address = _list[index].street;
                                   });
                                 },
                                 child: Card(
@@ -236,7 +236,7 @@ class _AddresssScreenState extends State<AddresssScreen>
                         if (_list.isEmpty) {
                           _showSnackBar("Добавьте адрес");
                         } else {
-                          Rest().postOrderOnline(address).then((value) {
+                          Rest().postOrderOnline(_address).then((value) {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -275,7 +275,7 @@ class _AddresssScreenState extends State<AddresssScreen>
 
   @override
   void onSuccess(Address address) {
-    // TODO: implement onSuccess
+   
   }
 
   @override
@@ -283,6 +283,8 @@ class _AddresssScreenState extends State<AddresssScreen>
     setState(() {
       _list.clear();
       _list.addAll(list);
+      if (list.isNotEmpty)
+        _address = list[0].street;
       _hide = 1;
     });
   }

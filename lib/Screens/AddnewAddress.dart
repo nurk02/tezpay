@@ -24,61 +24,59 @@ class _AddnewaddresState extends State<Addnewaddres> {
           child: Container(
         child: ListView(
           children: <Widget>[
-            Flexible(
-              child: Container(
-                margin: EdgeInsets.only(top: 10.0, left: 10.0, right: 5.0),
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          Circular_Back_Button(
-                            back: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 20.0),
-                      width: MediaQuery.of(context).size.width,
-                      child: Text(
-                        'Добавить новый адрес',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25.0,
-                          fontFamily: 'popins',
+            Container(
+              margin: EdgeInsets.only(top: 10.0, left: 10.0, right: 5.0),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Circular_Back_Button(
+                          back: () {
+                            Navigator.pop(context);
+                          },
                         ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 20.0),
+                    width: MediaQuery.of(context).size.width,
+                    child: Text(
+                      'Добавить новый адрес',
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25.0,
+                        fontFamily: 'popins',
                       ),
                     ),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height / 15,
-                      margin: EdgeInsets.only(left: 5.0, right: 5.0, top: 30.0),
-                      child: TextField(
-                        controller: streetField,
-                        textAlign: TextAlign.start,
-                        keyboardType: TextInputType.text,
-                        style: TextStyle(color: Colors.grey),
-                        decoration: InputDecoration(
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height / 15,
+                    margin: EdgeInsets.only(left: 5.0, right: 5.0, top: 30.0),
+                    child: TextField(
+                      controller: streetField,
+                      textAlign: TextAlign.start,
+                      keyboardType: TextInputType.text,
+                      style: TextStyle(color: Colors.grey),
+                      decoration: InputDecoration(
 //                              fillColor: Colors.grey[300],
 //                              filled: true,
-                          hintText: 'Улица/Адрес',
-                          hintStyle: TextStyle(color: Colors.grey),
+                        hintText: 'Улица/Адрес',
+                        hintStyle: TextStyle(color: Colors.grey),
 //                              border: OutlineInputBorder(
 //                                borderRadius: BorderRadius.all(
 //                                  const Radius.circular(100.0),
 //                                ),
 //                              ),
-                        ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             Container(

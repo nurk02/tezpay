@@ -64,7 +64,7 @@ class _OrderStatusState extends State<OrderStatus>
                             margin: EdgeInsets.only(top: 10.0),
                             width: MediaQuery.of(context).size.width,
                             child: Text(
-                              'Детали',
+                              'Чек',
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -80,6 +80,11 @@ class _OrderStatusState extends State<OrderStatus>
                           ),
                           Text(
                             "Сумма: " + _model.receipt.price.toString(),
+                            style: kMyOrdersNumber,
+                          ),
+                          Text(
+                            "Оплачено: " +
+                                _model.receipt.payed.toString(),
                             style: kMyOrdersNumber,
                           ),
                           SizedBox(height: 15),

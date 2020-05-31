@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tezpay/AppConstant/Constants.dart';
-import 'package:tezpay/Screens/Login.dart';
-import 'package:tezpay/Screens/LoginGoogle.dart';
+
 import 'package:tezpay/Screens/LoginPassword.dart';
 import 'package:tezpay/Screens/SignupScreen.dart';
 

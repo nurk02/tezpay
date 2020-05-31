@@ -34,7 +34,7 @@ class Receipt {
   String address;
   String paymentUrl;
   String receiptId;
-  double price;
+  String price;
   String createdDate;
   int shopType;
   int user;
@@ -59,7 +59,7 @@ class Receipt {
     address = json['address'];
     paymentUrl = json['payment_url'];
     receiptId = json['receipt_id'];
-    price = json['price'];
+    price = json['price'].toString();
     createdDate = json['created_date'];
     shopType = json['shop_type'];
     user = json['user'];
@@ -88,7 +88,7 @@ class Market {
   List<Category> category;
   String title;
   String address;
-  int deliveryPrice;
+  String deliveryPrice;
 
   Market(
       {this.id, this.category, this.title, this.address, this.deliveryPrice});
@@ -103,7 +103,7 @@ class Market {
     }
     title = json['title'];
     address = json['address'];
-    deliveryPrice = json['delivery_price'];
+    deliveryPrice = json['delivery_price'].toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -233,4 +233,3 @@ class Product {
     return data;
   }
 }
-

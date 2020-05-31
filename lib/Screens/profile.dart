@@ -165,127 +165,7 @@ class _prfileState extends State<prfile> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   // mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    GestureDetector(
-                      child: Container(
-                        //color:Colors.red,
-                        height: MediaQuery.of(context).size.height / 6.5,
-                        width: MediaQuery.of(context).size.width / 3,
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          elevation: 4.0,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Container(
-                                  child: SvgPicture.asset(
-                                'images/svg/credit-card.svg',
-                                width: 30.0,
-                                color: PrimaryColor,
-                              )),
-                              Container(
-                                  child: Text(
-                                'Платежи',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontFamily: 'popins',
-                                  fontSize: 18.0,
-                                ),
-                              )),
-                            ],
-                          ),
-                        ),
-                      ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PaymentMethod()),
-                        );
-                        //
-                      },
-                    ),
-                    GestureDetector(
-                        child: Container(
-                          //color:Colors.red,
-                          height: MediaQuery.of(context).size.height / 6.5,
-                          width: MediaQuery.of(context).size.width / 3.0,
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            elevation: 4.0,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: <Widget>[
-                                Container(
-                                    child: SvgPicture.asset(
-                                  'images/svg/address.svg',
-                                  width: 30.0,
-                                  color: PrimaryColor,
-                                )),
-                                Container(
-                                    child: Text(
-                                  'Адрес',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontFamily: 'popins',
-                                    fontSize: 18.0,
-                                  ),
-                                )),
-                              ],
-                            ),
-                          ),
-                        ),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => AddresssScreen(hideButton: 0,)),
-                          );
-                        }),
-                    // GestureDetector(
-                    //     child: Container(
-                    //       //color:Colors.red,
-                    //       height: MediaQuery.of(context).size.height / 6.5,
-                    //       width: MediaQuery.of(context).size.width / 3,
-                    //       child: Card(
-                    //         shape: RoundedRectangleBorder(
-                    //           borderRadius: BorderRadius.circular(10),
-                    //         ),
-                    //         elevation: 4.0,
-                    //         child: Column(
-                    //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    //           children: <Widget>[
-                    //             Container(
-                    //                 child: SvgPicture.asset(
-                    //               'images/svg/general-mail.svg',
-                    //               width: 30.0,
-                    //               color: PrimaryColor,
-                    //             )),
-                    //             Container(
-                    //                 child: Text(
-                    //               'General\n Details',
-                    //               textAlign: TextAlign.center,
-                    //               style: TextStyle(
-                    //                 fontFamily: 'popins',
-                    //                 fontSize: 18.0,
-                    //               ),
-                    //             )),
-                    //           ],
-                    //         ),
-                    //       ),
-                    //     ),
-                    //     onTap: () {
-                    //       Navigator.push(
-                    //         context,
-                    //         MaterialPageRoute(
-                    //             builder: (context) => Information()),
-                    //       );
-                    //     }),
-                  ],
+                  children: <Widget>[],
                 ),
               ),
               Container(
@@ -379,7 +259,8 @@ class _prfileState extends State<prfile> {
                         db.dropAll();
                         Navigator.pushAndRemoveUntil(
                             context,
-                            MaterialPageRoute(builder: (context) => LoginPassword()),
+                            MaterialPageRoute(
+                                builder: (context) => LoginPassword()),
                             (Route<dynamic> route) => false);
                       },
                       child: Container(

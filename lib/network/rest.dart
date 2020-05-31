@@ -139,7 +139,7 @@ class Rest {
     var db = DatabaseHelper();
     var user = await db.getUser();
 
-    try {
+    // try {
       var response = await get(
         '${localUrl}core/receipt/$id',
         headers: {
@@ -159,9 +159,9 @@ class Rest {
         default:
           throw ("error");
       }
-    } catch (error) {
-      throw (error.toString());
-    }
+    // } catch (error) {
+    //   throw (error.toString());
+    // }
   }
 
   Future<User> postAuth(String username, String password) async {
@@ -207,7 +207,7 @@ class Rest {
       User user = new User.fromSignUp(jsonDecode(responseBody));
       print("SAVED" + user.toJson().toString());
 
-      db.saveUserSignUp(user.toJson());
+      // db.saveUserSignUp(user.toJson());
       print("BUGBUG");
 
       switch (response.statusCode) {
@@ -229,28 +229,26 @@ class Rest {
     var products = await db.getOrderOnline();
 
     var order = OrderRequest(address: address, productIds: products);
-    try {
-      var response = await post(
-        '${localUrl}core/orderOnline/',
-        body: jsonEncode(order.toJson()),
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Token ${user.authToken}",
-        },
-      );
+    print(order.toJson());
+    var response = await post(
+      '${localUrl}core/orderOnline/',
+      body: jsonEncode(order.toJson()),
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Token ${user.authToken}",
+      },
+    );
 
-      String responseBody = utf8.decode(response.bodyBytes);
-      Map orderMap = jsonDecode(responseBody);
+    String responseBody = utf8.decode(response.bodyBytes);
+    print(responseBody);
+    Map orderMap = jsonDecode(responseBody);
 
-      switch (response.statusCode) {
-        case 200:
-          return orderMap;
-          break;
-        default:
-          return null;
-      }
-    } catch (error) {
-      throw (error.toString());
+    switch (response.statusCode) {
+      case 200:
+        return orderMap;
+        break;
+      default:
+        return null;
     }
   }
 

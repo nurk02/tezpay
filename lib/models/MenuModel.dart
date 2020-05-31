@@ -33,7 +33,7 @@ class Categories {
   List<Category> category;
   String title;
   String address;
-  String deliveryPrice;
+  double deliveryPrice;
 
   Categories(
       {this.id, this.category, this.title, this.address, this.deliveryPrice});
